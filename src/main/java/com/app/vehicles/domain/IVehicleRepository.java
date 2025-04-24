@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserRepository extends JpaRepository<Vehicle, Long> {
+public interface IVehicleRepository extends JpaRepository<Vehicle, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
@@ -35,9 +35,25 @@ public interface IUserRepository extends JpaRepository<Vehicle, Long> {
 
     // Additional application-specific methods:
 
-    // Search for a user by their email
-    Optional<Vehicle> findByEmail(String email);
+    Optional<Vehicle> findByPlate(String plate);
 
     // Check if an email is already registered
-    boolean existsByEmail(String email);
+    boolean existsByPlate(String plate);
+
+    // Search for a user by their email
+    Optional<Vehicle> findByTypevehiculo(int typeVehicleId);
+
+    // Check if an email is already registered
+    boolean existsByTypevehiculo(String typeVehicleId);
+
+    Optional<Vehicle> findByBrandid(String brandId);
+
+    // Check if an email is already registered
+    boolean existsByBrandid(String brandId);
+
+    Optional<Vehicle> findByColor(String color);
+
+    // Check if an email is already registered
+    boolean existsByColor(String color);
+
 }
