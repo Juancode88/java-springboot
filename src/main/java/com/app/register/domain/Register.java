@@ -1,78 +1,46 @@
 package com.app.register.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.util.Date;
 
 @Entity
-@Table(name = "users")
+@Table(name = "registers")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Register {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long User_id;
+    private Long id;
 
-    @Column(nullable = false)
-    private int vehicule_id;
+    @Column(name = "user_id", nullable = false)
+    @NotNull(message = "user cannot be null")
+    private int userId; 
 
-    @Column(nullable = false, unique = true)
-    private int service_id;
+    @Column(name = "vehicle_id", nullable = false)
+    @NotNull(message = "Vehicle cannot be null")
+    private int vehicleId; 
 
-    @Column(nullable = false)
-    private int service_state_id;
+    @Column(name = "service_id", nullable = false)
+    @NotNull(message = "Service cannot be null")
+    private int serviceId; 
 
-    @Column(nullable = false)
-    private int operador_id;
+    @Column(name = "service_state_id", nullable = false)
+    @NotNull(message = "ServiceState cannot be null")
+    private int serviceStateId; 
 
-    // Empty constructor (required for JPA)
-    public Register() {}
+    @Column(name = "operator_id", nullable = false)
+    @NotNull(message = "Operator cannot be null")
+    private int operatorId; 
 
-    // Constructor with parameters
-    public Register(Long User_id, int vehicule_id, int service_id, int service_state_id, int operador_id) {
-        this.User_id = User_id;
-        this.vehicule_id = vehicule_id;
-        this.service_id = service_id;
-        this.service_state_id = service_state_id;
-        this.operador_id = operador_id;
-    }
-
-    // Getters y Setters
-    public Long getId() {
-        return User_id;
-    }
-
-    public void setId(Long id) {
-        this.User_id = id;
-    }
-
-    public int getVehicule_id() {
-        return vehicule_id;
-    }
-
-    public void setVehicule_id(int vehicule_id) {
-        this.vehicule_id = vehicule_id;
-    }
-
-    public int getService_id() {
-        return service_id;
-    }
-
-    public void setService_id(int service_id) {
-        this.service_id = service_id;
-    }
-
-    public int getService_state_id() {
-        return this.service_state_id;
-    }
-
-    public void setService_state_id(int service_state_id) {
-        this.service_state_id = service_state_id;
-
-    }
-    public int getOperador_idd() {
-        return this.operador_id;
-    }
-
-    public void setOperador_idd(int operador_id) {
-        this.operador_id = operador_id;
-    }
+    @Column(name = "register_date", nullable = false)
+    @NotNull(message = "Date cannot be null")
+    @Temporal(TemporalType.TIMESTAMP) 
+    private Date registerDate; 
 }

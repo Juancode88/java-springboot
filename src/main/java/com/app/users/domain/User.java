@@ -9,16 +9,13 @@ import lombok.Data;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Roleid;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false, unique = true)
     private String email;
-
-    @Column(nullable = false, unique = true)
-    private String phone;
 
     @Column(nullable = false)
     private String password;
@@ -27,21 +24,20 @@ public class User {
     public User() {}
 
     // Constructor with parameters
-    public User(Long Roleid, String name, String email, String password, String phone) {
-        this.Roleid = Roleid;
+    public User(Long id, String name, String email, String password) {
+        this.id = id;
         this.name = name;
         this.email = email;
-        this.phone = phone;
         this.password = password;
     }
 
     // Getters y Setters
     public Long getId() {
-        return Roleid;
+        return id;
     }
 
-    public void setRoleid(Long id) {
-        this.Roleid = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -59,16 +55,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
 
     public String getPassword() {
         return this.password;
